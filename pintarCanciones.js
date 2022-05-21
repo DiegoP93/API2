@@ -1,29 +1,5 @@
-//Pasos para consumir un API
-
-//1.Para donde voy(Conocer la URI del servicio o API a consumir)
-const URI="https://api.spotify.com/v1/artists/4tm8CEdm4pkQsEh4jIr9Yp/top-tracks?market=US"
-
-//2.Armo la peticion(Que se va hacer)
-const TOKEN="Bearer BQDzudd4LRjKOLBkp14Wh43z2MD6uIkXnbsGF8NsCP1ptFw9E8JHgDfYy9N0TnEWmpJ48bBI1RMjE6Jcgo8ne6XZ0GKoJgoIpSy1zLNafJ8RtAkAdT5qQLNwvVJy3VWCCFVunVwt48OljVPDAcK4mOiDfZF5OPg"
-
-const PETICION={
-    method:"GET",
-    headers:{Authorization:TOKEN}
-}
-//3. Arranca para el servidor (Consumir API)
-fetch(URI,PETICION)
-.then(function(respuesta){
-    return(respuesta.json()) //se verfica que la repuesta este en formato json
-})
-.then(function(respuesta){
-    pintarCanciones(respuesta)// hago lo que quiera con la respueta
-}) 
-.catch(function(respuesta){
-    console.log(respuesta)//semuetra el fallo
-})
-
 //Funcion para pintar la informacion que llega de API
-function pintarCanciones(canciones){
+export function pintarCanciones(canciones){
     console.log(canciones)//Objeto
     console.log(canciones.tracks)//Arreglo
     let fila=document.getElementById("fila")
